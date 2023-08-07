@@ -82,7 +82,7 @@
                             <ul>
                                 <li><a href="/user/like.do">나의 관심점포</a></li>
                                 <li><a href="/user/edit.do">내 리뷰 관리</a></li>
-                                <li><a href="#">공지사항</a></li>
+                                <li><a href="/notice/noticeList.do">공지사항</a></li>
                                 <li><a href="/user/changOption.do?userId=${sessionScope.userId }">환경설정</a></li>
                                 <li><a href="#">고객센터</a></li>
                                 <li><a href="#">신고</a></li>

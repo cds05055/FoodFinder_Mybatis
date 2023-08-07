@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>개인정보수정</title>
+        <title>공지사항</title>
+        <link rel="stylesheet" href="/resources/css/notice/notice.css">
         <link rel="stylesheet" href="/resources/css/reset/reset.css">
-        <link rel="stylesheet" href="/resources/css/user/userInfo.css">
     </head>
     <body>
         <div id="container">
@@ -45,7 +44,7 @@
                             </div>
                             <div id="user-nick-logout">
                                 <div id="user-info">
-                                    ${sessionScope.userNickname} 님
+                                    <a href="/user/edit.do">${sessionScope.userNickname} 님</a>
                                 </div>
                                 <div id="logout">
                                     <a href="/user/logout.do">
@@ -71,7 +70,7 @@
                             </div>
                             <div id="info-edit">
                                 <p>${sessionScope.userNickname} 님, 안녕하세요.</p>
-                                <a href="/user/info.do?user-id=${userId }">
+                                <a href="/user/info.do">
                                     <div id="info-edit-btn">
                                         회원 정보 수정
                                     </div>
@@ -83,7 +82,7 @@
                             <ul>
                                 <li><a href="/user/like.do">나의 관심점포</a></li>
                                 <li><a href="/user/edit.do">내 리뷰 관리</a></li>
-                                <li><a href="/notice/noticeList.do">공지사항</a></li>
+                                <li><a href="#">공지사항</a></li>
                                 <li><a href="/user/changOption.do?userId=${sessionScope.userId }">환경설정</a></li>
                                 <li><a href="#">고객센터</a></li>
                                 <li><a href="#">신고</a></li>
@@ -93,37 +92,45 @@
                 </div>
                 <div id="user-info-edit-box">
                     <div id="user-shop">
-                        <form action="/user/info.do" method="post">
-                            <div id="input-div">
-                                <div id="name-box" class="box">
-                                    <span class="p-tag">이름</span><div id="name-div" name="user-name" class="non-change">${sessionScope.userName }</div>
-                                </div>
-                                <div id="nickname-box" class="box">
-                                    <span class="p-tag">닉네임</span><input type="text" name="user-nickname" value="${sessionScope.userNickname }" id="nickname-inp" class="change"></input>
-                                </div>
-                                <div id="email-box" class="box">
-                                    <span class="p-tag">이메일(아이디)</span><input type="text" id="email-div" name="user-id" value="${sessionScope.userId }" class="non-change" readonly></input>
-                                </div>
-                                <div id="pw-box" class="box">
-                                    <span class="p-tag">현재 비밀번호</span><input type="password" name="user-pw-now" id="pw-inp" class="change" placeholder="현재 사용중이신 비밀번호를 입력해주세요."></input>
-                                </div>
-                                <div id="newPw-box" class="box">
-                                    <span class="p-tag">비밀번호 변경</span><input type="password" name="user-pw-new" id="new-pw" class="change" placeholder="변경하실 비밀번호를 입력해주세요."></input>
-                                </div>
-                                <div id="rePw-box" class="box" style="margin-bottom: 4px;">
-                                    <span class="p-tag">비밀번호 변경 확인</span><input type="password" name="user-pw-ck" id="pw-re" class="change" placeholder="비밀번호를 한 번 더 입력해주세요."></input>
-                                </div>
-<!--                                 <input type="button" id="pw-btn" value="변경하기"></input><br> -->
-                                <div id="phone-box" class="box">
-                                    <span class="p-tag">휴대폰 번호</span><input type="text" id="phone-div" name="user-phone" class="change" value="${sessionScope.userPhone }"></input>
-<!--                                     <div id="tel-btn">인증완료</div> -->
-                                </div>
-                            </div>
-                            <div id="btn-div">
-                                <input type="button" value="취소" id="cancel" class="btn">
-                                <input type="submit" value="적용" id="submit" class="btn">
-                            </div>
-                        </form>
+                        <table>
+			<colgroup>
+				<col width="10%">
+				<col width="35%">
+				<col width="10%">
+				<col width="25%">
+				<col width="10%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>글번호</th>
+					<th>글제목</th>
+					<th>글쓴이</th>
+					<th>작성일</th>
+					<th>조회수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="notice" items="${requestScope.nList }">
+					<tr>
+						<th>${notice.noticeNo }</th>
+						<th><a href="/notice/detail.do?noticeNo=${notice.noticeNo }">${notice.noticeSubject }</a></th>
+						<th>${notice.noticeWriter }</th>
+						<th>${notice.noticeDate }</th>
+						<th>${notice.viewCount }</th>
+					</tr>
+				</c:forEach>
+				<tr>
+					<td colspan="5" align="center">
+						${pageNavi }
+<!-- 						<a href="#">1</a> -->
+<!-- 						<a href="#">2</a> -->
+<!-- 						<a href="#">3</a> -->
+<!-- 						<a href="#">4</a> -->
+<!-- 						<a href="#">5</a> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
                     </div>
                 </div>
             </main>
@@ -142,7 +149,6 @@
                 </div>
             </footer>
         </div>
-
         <script src="/resources/js/main/mainPage.js"></script>
     </body>
 </html>
