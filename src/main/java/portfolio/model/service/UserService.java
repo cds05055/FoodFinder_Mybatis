@@ -2,7 +2,10 @@ package portfolio.model.service;
 
 import java.sql.Connection;
 
+import org.apache.ibatis.session.SqlSession;
+
 import portfolio.common.JDBCTemplate;
+import portfolio.common.SqlSessionTemplate;
 import portfolio.model.dao.UserDAO;
 import portfolio.model.vo.User;
 
@@ -16,60 +19,53 @@ public class UserService {
 	}
 
 	public User selectCheckLogin(User user) {
-		Connection conn = jdbcTemplate.createConnection();
-		User uOne = uDao.selectCheckLogin(conn, user);
-		jdbcTemplate.close(conn);
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		User uOne = uDao.selectCheckLogin(session, user);
+		session.close();
 		return uOne;
 	}
 
 
 	public User selectOneById(String userId) {
-		Connection conn = jdbcTemplate.createConnection();
-		User uOne = uDao.selectOneById(conn, userId);
-		jdbcTemplate.close(conn);
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		User uOne = uDao.selectOneById(session, userId);
+		session.close();
 		return uOne;
 	}
 
 	public int insertUser(User user) {
-		// 연결 생성
-		Connection conn = jdbcTemplate.createConnection();
-		
-		// DAO 호출(연결과 같이 전달)
-		int result = uDao.insertUser(conn, user);
-		
-		// 커밋, 롤백
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = uDao.insertUser(session, user);
 		if(result > 0) {
-			// 성공 시 커밋
-			jdbcTemplate.commit(conn);
+			session.commit();
 		} else {
-			// 실패 시 롤백
-			jdbcTemplate.rollback(conn);
+			session.rollback();
 		}
-		jdbcTemplate.close(conn);
+		session.close();
 		return result;
 	}
 
 	public int modifyUser(User user) {
-		Connection conn = jdbcTemplate.createConnection();
-		int result = uDao.modifyUser(conn, user);
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = uDao.modifyUser(session, user);
 		if(result > 0) {
-			jdbcTemplate.commit(conn);
+			session.commit();
 		} else {
-			jdbcTemplate.rollback(conn);
+			session.rollback();
 		}
-		jdbcTemplate.close(conn);
+		session.close();
 		return result;
 	}
 
 	public int deleteUser(User user) {
-		Connection conn = jdbcTemplate.createConnection();
-		int result = uDao.deleteUser(conn, user);
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = uDao.deleteUser(session, user);
 		if(result > 0) {
-			jdbcTemplate.commit(conn);
+			session.commit();
 		} else {
-			jdbcTemplate.rollback(conn);
+			session.rollback();
 		}
-		jdbcTemplate.close(conn);
+		session.close();
 		return result;
 	}
 

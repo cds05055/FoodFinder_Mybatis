@@ -46,7 +46,6 @@ public class UserInfoController extends HttpServlet {
 		String userPhone = request.getParameter("user-phone");
 		UserService service = new UserService();
 		User user = new User(userId, userPw, userNickname, userName, userPhone);
-		System.out.println(user.toString());
 		int result = service.modifyUser(user);
 		if(result > 0) {
 			response.sendRedirect("/index.jsp");

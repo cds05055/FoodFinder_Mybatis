@@ -9,13 +9,12 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-				<property name="username" value="MEMBERWEB"/>
-				<property name="password" value="MEMBERWEB"/>
+				<property name="username" value="PORTFOLIO"/>
+				<property name="password" value="PORTFOLIO"/>
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="mappers/member-mapper.xml"/>
-		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/user-mapper.xml"/>
 	</mappers>
 </configuration>
