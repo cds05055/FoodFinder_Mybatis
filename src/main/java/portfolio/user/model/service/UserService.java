@@ -1,13 +1,11 @@
-package portfolio.model.service;
-
-import java.sql.Connection;
+	package portfolio.user.model.service;
 
 import org.apache.ibatis.session.SqlSession;
 
 import portfolio.common.JDBCTemplate;
 import portfolio.common.SqlSessionTemplate;
-import portfolio.model.dao.UserDAO;
-import portfolio.model.vo.User;
+import portfolio.user.model.dao.UserDAO;
+import portfolio.user.model.vo.User;;
 
 public class UserService {
 	private JDBCTemplate jdbcTemplate;

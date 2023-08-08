@@ -1,4 +1,4 @@
-package portfolio.controller;
+package portfolio.user.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import portfolio.model.service.UserService;
-import portfolio.model.vo.User;
+import portfolio.user.model.service.UserService;
+import portfolio.user.model.vo.User;
 
 /**
  * Servlet implementation class UserEnrollController

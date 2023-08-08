@@ -1,4 +1,4 @@
-package portfolio.controller;
+package portfolio.user.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

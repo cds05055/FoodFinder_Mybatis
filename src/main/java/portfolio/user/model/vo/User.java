@@ -1,4 +1,4 @@
-package portfolio.model.vo;
+package portfolio.user.model.vo;
 
 import java.sql.Timestamp;
 

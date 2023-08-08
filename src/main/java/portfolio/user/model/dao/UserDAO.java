@@ -1,14 +1,8 @@
-package portfolio.model.dao;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
+package portfolio.user.model.dao;
 
 import org.apache.ibatis.session.SqlSession;
 
-import portfolio.model.vo.User;
+import portfolio.user.model.vo.User;
 
 public class UserDAO {
 

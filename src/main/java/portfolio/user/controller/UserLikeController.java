@@ -1,4 +1,4 @@
-package portfolio.controller;
+package portfolio.user.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserEditController
+ * Servlet implementation class UserLikeController
  */
-@WebServlet("/user/edit.do")
-public class UserEditController extends HttpServlet {
+@WebServlet("/user/like.do")
+public class UserLikeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserEditController() {
+    public UserLikeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class UserEditController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/user/userEdit.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/user/userLikeShop.jsp").forward(request, response);
 	}
 
 	/**
